@@ -1,0 +1,45 @@
+create table check_water(
+   id number,
+   time varchar2,
+   pump number,
+   door number,
+   primary key(id)
+);
+select * from ardu where sensor_number = (select MAX(sensor_number) from ardu);
+drop table ardu;
+drop table rasp;
+
+insert into rasp values(1,2);
+
+insert into ardu(sensor_number, sensor_value) values((select MAX(sensor_number) from ardu)+1,4);
+insert into ardu(sensor_number, sensor_value) values((select MAX(sensor_number) from ardu)+1,40);
+insert into rasp(people_num, people) values(1,1);
+
+create table ardu(
+	sensor_number number,
+	date_for date default sysdate, 
+	sensor_value number,
+	primary key(sensor_number)
+);
+create table rasp(
+	people_num number,
+	date_for date default sysdate, 
+	people number,
+	primary key(people_num)
+);
+
+create table test_li(
+	test_number number,	
+	shut number,
+	date_for date default sysdate,
+	primary key(test_number)
+);
+insert into test_li(test_number, shut) values(1,1);
+
+select * from test_li where test_number = (select MAX(test_number) from test_li);
+
+insert into test_li(test_number, shut) values((select max(test_number)+1 from test_li),?);
+
+select * from ardu
+select * from rasp
+

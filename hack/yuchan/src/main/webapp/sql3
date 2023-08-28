@@ -1,0 +1,23 @@
+drop table ardu;
+drop table rasp;
+
+insert into rasp values(1,2);
+
+insert into ardu(sensor_number, sensor_value) values((select max(sensor_number)+1 from ardu),4);
+insert into rasp(people_num, people) values((select max(people_num)+1 from rasp),1);
+
+create table ardu(
+	sensor_number number,
+	date_for date default sysdate, 
+	sensor_value number,
+	primary key(sensor_number)
+);
+create table rasp(
+	people_num number,
+	date_for date default sysdate, 
+	people number,
+	primary key(people_num)
+);
+select * from ardu
+select * from rasp
+
